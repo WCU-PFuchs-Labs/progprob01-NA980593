@@ -19,12 +19,36 @@ public class homework20_1
 {
    public static void main(String[] args)
    {
-      //add your code here
-   
+      LinkedList list = new LinkedList();
+      Scanner scanner = new Scanner(System.in);
+      System.out.print("input: ");
+      list.head = new ListNode(scanner.nextInt());
+      list.head.next = new ListNode(scanner.nextInt());
+      list.head.next.next = new ListNode(scanner.nextInt());
+      list.head.next.next.next = new ListNode(scanner.nextInt());
+      list.head.next.next.next.next = new ListNode(scanner.nextInt());
+      System.out.println(list);
+      deleteDuplicates(list);
+      System.out.println(list); 
    }
    public static void deleteDuplicates(LinkedList llist)
    {
       //add your code here
+      ListNode check = llist.head;
+      while (check.next!=null){
+         ListNode node = check.next;
+         while (node.next!=null) {
+            if (node.value == check.value) {
+               node = node.next;
+               check.next=node;
+            }
+            else {
+               check=check.next;
+               node=node.next;
+            }
+         }
+         check=check.next;
+      }
    }
 
 }
